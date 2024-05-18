@@ -31,7 +31,7 @@ y = data[:, -1].reshape(-1, 1)  # reshape para garantir o formato correto da mat
 
 
 # Definir hiperparâmetros
-epochs = 1000000  # Número de épocas de treinamento
+epochs = 10000  # Número de épocas de treinamento
 lr = 0.1  # Taxa de aprendizado
 
 
