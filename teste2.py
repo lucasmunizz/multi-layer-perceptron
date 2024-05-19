@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
 # Classe MLP (sem mudanças)
 class MLP:
@@ -65,7 +64,7 @@ print(f'Adjusted X shape: {X.shape}')
 
 # Definir os tamanhos das camadas
 input_size = X.shape[1]
-hidden_size = 100
+hidden_size = 10
 output_size = Y.shape[1]
 
 # Inicializar a rede
@@ -82,35 +81,4 @@ plt.xlabel('Epochs')
 plt.ylabel('Mean Squared Error')
 plt.title('Training Error')
 plt.savefig('training_error.png')  # Salvar o gráfico como PNG
-plt.show()
-
-# Obter a saída prevista pela rede após o treinamento
-predictions = mlp.forward(X)
-
-print(predictions)
-
-# Calcular e imprimir MSE e MAE
-mse = np.mean(np.square(Y - predictions))
-mae = np.mean(np.abs(Y - predictions))
-print(f'Mean Squared Error: {mse}')
-print(f'Mean Absolute Error: {mae}')
-
-accuracy = np.mean(np.round(predictions) == Y)
-print(f'Accuracy: {accuracy * 100:.2f}%')
-
-
-# Plotar comparação para regressão
-plt.plot(Y, color='blue', label='Real')
-plt.plot(predictions, color='red', label='Predicted')
-plt.xlabel('Sample Index')
-plt.ylabel('Output Value')
-plt.legend()
-plt.title('Real vs Predicted Outputs')
-plt.show()
-
-# Plotar matriz de confusão (se for um problema de classificação)
-cm = confusion_matrix(Y, np.round(predictions))
-disp = ConfusionMatrixDisplay(confusion_matrix=cm)
-disp.plot()
-plt.title('Confusion Matrix')
 plt.show()
